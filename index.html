@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        .container {
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            background-color: #000000;
+            width: 100%;
+        }
+
+        video {
+
+            display: block;
+            width: 100%;
+            max-height: 100vh;
+        }
+    </style>
+    <style>
+        @media screen and (max-width:500px) {
+            video {
+                margin-top: 50%;
+            }
+        }
+    </style>
+    <style>
+        .float-right {
+            text-align: center;
+        }
+
+        #openNav {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            z-index: 1000000000000;
+            background: rgb(77, 77, 77);
+        }
+
+        .w3-sidebar {
+            background: rgb(117, 117, 117);
+            color: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            height: 100vh;
+            width: 250px !important;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+
+        .active {
+            background: rgb(235, 224, 224);
+            color:black
+        }
+        .w3-bar-item{
+            margin: 0 1rem;
+        }
+        .w3-bar-item2{
+            float: right;
+            margin:1rem;
+            background: rgb(228, 226, 226);
+            color: black;
+            border-radius: 50%;
+        }
+        
+        .w3-bar-item2:hover{
+            background: rgb(235, 224, 224);
+        }
+        .btn{
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
+            <button class="w3-bar-item2 w3-button w3-large float-right" onclick="w3_close()">&times;</button>
+
+        </div>
+        <button id="openNav" class="w3-button btn w3-xlarge" onclick="w3_open()">&#9776;</button>
+        <div class="w3-container" onclick="w3_close()">
+            <video loop id="myVideo" autoplay controls>
+                <source src="http://media.w3.org/2010/05/sintel/trailer.mp4" type='video/mp4'>
+                Video not supported.
+            </video>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        var videoStorage = [
+            { url: './video/hai1.mp4', name: 'Hài 1' },
+            { url: './video/hai2.mp4', name: "Hài 2" },
+            { url: './video/hai3.mp4', name: "Hài 3" },
+            { url: './video/hai4.mp4', name: "Hài 4" },
+            { url: './video/hai5.mp4', name: "Hài 5" },
+            { url: './video/hai6.mp4', name: "Hài 6" },
+            { url: './video/hai7.mp4', name: "Hài 7" },
+            { url: './video/hai8.mp4', name: "Hài 8" },
+            { url: './video/hai9.mp4', name: "Hài 9" },
+            { url: './video/hai10.mp4', name: "Hài 10" },
+            { url: './video/hai11.mp4', name: "Hài 11" },
+            { url: './video/hai12.mp4', name: "Hài 12" },
+            { url: './video/hai13.mp4', name: "Hài 13" },
+            { url: './video/hai14.mp4', name: "Hài 14" },
+            { url: './video/hai15.mp4', name: "Hài 15" },
+            { url: './video/hai16.mp4', name: "Hài 16" },
+            { url: './video/hai17.mp4', name: "Hài 17" },
+            { url: './video/hai18.mp4', name: "Hài 18" },
+            { url: './video/hai19.mp4', name: "Hài 19" },
+            { url: './video/hai20.mp4', name: "Hài 20" },
+            { url: './video/hai21.mp4', name: "Hài 21" },
+            { url: './video/hai22.mp4', name: "Hài 22" },
+            { url: './video/hai23.mp4', name: "Hài 23" },
+            { url: './video/hai24.mp4', name: "Hài 24" },
+            { url: './video/hai25.mp4', name: "Hài 25" },
+            { url: './video/hai26.mp4', name: "Hài 26" },
+            { url: './video/hai27.mp4', name: "Hài 27" },
+            { url: './video/hai29.mp4', name: "Hài 29" },
+            { url: './video/hai30.mp4', name: "Hài 30" },
+            { url: './video/hai31.mp4', name: "Hài 31" },
+            { url: './video/hai32.mp4', name: "Hài 32" },
+            { url: './video/hai33.mp4', name: "Hài 33" },
+            { url: './video/hai34.mp4', name: "Hài 34" },
+            { url: './video/hai35.mp4', name: "Hài 35" },
+            { url: './video/hai36.mp4', name: "Hài 36" },
+            { url: './video/hai37.mp4', name: "Hài 37" },
+            { url: './video/hai38.mp4', name: "Hài 38" },
+            { url: './video/hai39.mp4', name: "Hài 39" },
+            { url: './video/hai40.mp4', name: "Hài 40" },
+            { url: './video/hai41.mp4', name: "Hài 41" },
+            { url: './video/hai42.mp4', name: "Hài 42" },
+            { url: './video/hai43.mp4', name: "Hài 43" },
+            { url: './video/hai44.mp4', name: "Hài 44" },
+            { url: './video/hai45.mp4', name: "Hài 45" },
+            { url: './video/hai46.mp4', name: "Hài 46" },
+            { url: './video/hai47.mp4', name: "Hài 47" },
+            { url: './video/hai48.mp4', name: "Hài 48" },
+            { url: './video/hai49.mp4', name: "Hài 49" },
+            { url: './video/hai50.mp4', name: "Hài 50" },
+            { url: './video/hai51.mp4', name: "Hài 51" },
+            { url: './video/hai52.mp4', name: "Hài 52" },
+            { url: './video/hai53.mp4', name: "Hài 53" },
+            { url: './video/hai54.mp4', name: "Hài 54" },
+            { url: './video/hai55.mp4', name: "Hài 55" },
+            { url: './video/hai56.mp4', name: "Hài 56" },
+            { url: './video/hai57.mp4', name: "Hài 57" },
+            { url: './video/hai58.mp4', name: "Hài 58" },
+            { url: './video/hai59.mp4', name: "Hài 59" },
+            { url: './video/hai60.mp4', name: "Hài 60" },
+            { url: './video/hai61.mp4', name: "Hài 61" },
+            { url: './video/hai62.mp4', name: "Hài 62" },
+            { url: './video/hai63.mp4', name: "Hài 63" },
+            { url: './video/hai64.mp4', name: "Hài 64" },
+            { url: './video/hai65.mp4', name: "Hài 65" },
+            { url: './video/hai66.mp4', name: "Hài 66" },
+            { url: './video/hai67.mp4', name: "Hài 67" },
+            { url: './video/hai68.mp4', name: "Hài 68" },
+            { url: './video/hai69.mp4', name: "Hài 69" },
+            { url: './video/hai70.mp4', name: "Hài 70" },
+            { url: './video/hai71.mp4', name: "Hài 71" }
+
+        ],
+            video = document.querySelector('video'),
+            activeVideoUrl = videoStorage[Math.round(Math.random() * (videoStorage.length - 1))];
+
+
+        video.setAttribute('src', activeVideoUrl.url);
+        video.autoplay = true;
+        var nav = $('.w3-sidebar')
+
+        videoStorage.forEach(element => {
+            var html = `<a onclick="playVideo('` + element.url + `')" class="w3-bar-item w3-button">` + element.name + `</a>`
+            nav.append(html)
+        });
+
+        $(".w3-bar-item").click(function () {
+            $('.w3-bar-item').removeClass("active");
+            $(this).addClass("active");
+        })
+        function playVideo(index) {
+            video.setAttribute('src', index);
+            video.autoplay = true;
+            document.getElementById("myVideo").style.marginLeft = "0%";
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("openNav").style.display = "inline-block";
+        }
+    </script>
+    <script>
+        function w3_open() {
+            document.getElementById("myVideo").style.marginLeft = "25%";
+            document.getElementById("mySidebar").style.width = "25%";
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("openNav").style.display = 'none';
+        }
+        function w3_close() {
+            document.getElementById("myVideo").style.marginLeft = "0%";
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("openNav").style.display = "inline-block";
+        }
+    </script>
+    <script>
+
+    </script>
+    <style>
+        body {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+
+
+    <script type="text/javascript">
+        //<=!=[=C=D=A=T=A=[
+        document.onkeypress = function (event) {
+            event = (event || window.event);
+            if (event.keyCode === 123) {
+                //alert('No F-12');
+                return false;
+            }
+        };
+        document.onmousedown = function (event) {
+            event = (event || window.event);
+            if (event.keyCode === 123) {
+                //alert('No F-keys');
+                return false;
+            }
+        };
+        document.onkeydown = function (event) {
+            event = (event || window.event);
+            if (event.keyCode === 123) {
+                //alert('No F-keys');
+                return false;
+            }
+        };
+
+        function contentprotector() {
+            return false;
+        }
+        function mousehandler(e) {
+            var myevent = (isNS) ? e : event;
+            var eventbutton = (isNS) ? myevent.which : myevent.button;
+            if ((eventbutton === 2) || (eventbutton === 3))
+                return false;
+        }
+        document.oncontextmenu = contentprotector;
+        document.onmouseup = contentprotector;
+        var isCtrl = false;
+        window.onkeyup = function (e) {
+            if (e.which === 17)
+                isCtrl = false;
+        }
+
+        window.onkeydown = function (e) {
+            if (e.which === 17)
+                isCtrl = true;
+            if (((e.which === 85) || (e.which === 65) || (e.which === 88) || (e.which === 67) || (e.which === 86) || (e.which === 83)) && isCtrl === true) {
+                return false;
+            }
+        }
+        isCtrl = false;
+        document.ondragstart = contentprotector;
+//]=]=></script>
+</body>
+
+</html>
